@@ -64,6 +64,18 @@ public class TeamStub {
 	}
 	
 	/**
+	 * Create a team, just based on name
+	 * @param name
+	 */
+	public TeamStub(String name){
+		this.name = name;
+		this.members = new ArrayList<String>();
+		this.admins = new ArrayList<String>();
+		this.creationDate = new Date();
+		this.color = TeamColors.None;
+	}
+	
+	/**
 	 * Create an empty team.
 	 */
 	public TeamStub() {

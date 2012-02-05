@@ -4,15 +4,11 @@ import java.util.logging.Logger;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.nitrikx.minecraft.bukkit.battlegrounds.commands.BattlegroundsCommands;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.InterpretCommand;
-import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.ListTeams;
-import com.nitrikx.minecraft.bukkit.battlegrounds.team.TeamsManager;
 
 public class Battlegrounds extends JavaPlugin{
 	

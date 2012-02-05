@@ -48,16 +48,17 @@ public class TeamsManager {
 	 * @param teamName The name of the team.
 	 * @param player The player to add.
 	 */
-	public void addPlayerToTeam(String teamName, String player){
+	public boolean addPlayerToTeam(String teamName, String player){
+		
+		boolean added = false;
 		
 		for(TeamStub team : this.teams){
 			if(team.getName().equals(teamName)){
-				
-				team.addPlayer(player); 
-				
+				added = team.addPlayer(player);
 			}
 		}
 		
+		return added;
 	}
 	
 	/**
@@ -66,18 +67,19 @@ public class TeamsManager {
 	 * @return True if available, else false.
 	 */
 	public boolean isTeamNameAvailable(String name){
-		
 		boolean isAvailable = true;
 		
 		for(TeamStub team : this.teams){
 			if(team.getName().equals(name)){
 				isAvailable = false;
 			}
-			
 		}
 		
 		return isAvailable;
-		
+	}
+	
+	public boolean createTeam(String name){
+		return this.teams.add(new TeamStub(name));
 	}
 
 	public List<TeamStub> getTeams() {

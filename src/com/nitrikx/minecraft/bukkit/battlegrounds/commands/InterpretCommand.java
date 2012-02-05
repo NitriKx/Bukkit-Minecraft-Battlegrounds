@@ -4,11 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.Help;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.PluginInterpreter;
-import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.Version;
-import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.ListTeams;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.TeamsInterpreter;
 
 public class InterpretCommand {
@@ -27,7 +24,7 @@ public class InterpretCommand {
 	    	//TEAMS COMMANDS
 	    	//
 
-	    	if(args[0].equalsIgnoreCase("teams")){ 
+	    	if(args[0].equalsIgnoreCase(BattlegroundsCommands.Team.suffix)){ 
 	    		return TeamsInterpreter.interpret(sender, cmd, commandLabel, args);
 	    	}
     		

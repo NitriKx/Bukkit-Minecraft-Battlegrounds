@@ -11,9 +11,7 @@ public class PlayerManager {
 	
 	private static final Logger log = Logger.getLogger("Battleagrounds");
 	
-	private List<Player> player;
-	
-	private HashMap<String, Player> playerByName;
+	private List<String> players;
 	
 	private static PlayerManager singleton;
 	
@@ -21,8 +19,7 @@ public class PlayerManager {
 	 * Create a PlayerManager object.
 	 */
 	private PlayerManager(){
-		this.player = new ArrayList<Player>();
-		this.playerByName = new HashMap<String, Player>();
+		this.players = new ArrayList<String>();
 	}
 	
 	/**
@@ -37,13 +34,26 @@ public class PlayerManager {
 		
 		return singleton;
 	}
-
-	public List<Player> getPlayer() {
-		return player;
+	
+	public boolean addPlayer(String playerName){
+		
+		boolean isAdded = false;
+		
+		//If player not already in the list
+		if(!this.players.contains(playerName)){
+			this.players.add(playerName);
+			isAdded = true;
+		}
+		
+		return isAdded;
 	}
 
-	public void setPlayer(List<Player> player) {
-		this.player = player;
+	public List<String> getPlayer() {
+		return players;
+	}
+
+	public void setPlayer(List<String> player) {
+		this.players = player;
 	}
 	
 	

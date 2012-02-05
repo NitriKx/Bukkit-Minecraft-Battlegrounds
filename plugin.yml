@@ -1,0 +1,6 @@
+name: HelloWorld
+main: com.nitrikx.minecraft.bukkit.battlegrounds.HelloWorld
+version: 1.0
+description: >
+             Hello World!
+commands:

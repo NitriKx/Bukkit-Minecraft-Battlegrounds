@@ -5,13 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.bukkit.entity.Player;
+
 public class PlayerManager {
 	
 	private static final Logger log = Logger.getLogger("Battleagrounds");
 	
-	private List<PlayerBG> player;
+	private List<Player> player;
 	
-	private HashMap<String, PlayerBG> playerByName;
+	private HashMap<String, Player> playerByName;
 	
 	private static PlayerManager singleton;
 	
@@ -19,10 +21,8 @@ public class PlayerManager {
 	 * Create a PlayerManager object.
 	 */
 	private PlayerManager(){
-		this.player = new ArrayList<PlayerBG>();
-		this.playerByName = new HashMap<String, PlayerBG>();
-		
-		this.playerByName.put("Server", new PlayerBG("Server"));
+		this.player = new ArrayList<Player>();
+		this.playerByName = new HashMap<String, Player>();
 	}
 	
 	/**
@@ -38,11 +38,11 @@ public class PlayerManager {
 		return singleton;
 	}
 
-	public List<PlayerBG> getPlayer() {
+	public List<Player> getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(List<PlayerBG> player) {
+	public void setPlayer(List<Player> player) {
 		this.player = player;
 	}
 	

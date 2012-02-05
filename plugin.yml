@@ -1,6 +1,10 @@
-name: HelloWorld
-main: com.nitrikx.minecraft.bukkit.battlegrounds.HelloWorld
-version: 1.0
+name: Battlegrounds
+main: com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds
+version: 0.1
 description: >
-             Hello World!
+             Battlegrounds
 commands:
+   bg:
+      description: Get help of battlegrounds.
+      permission: battlegrounds.basic
+      usage: "Get list of commands : /bg [help]"

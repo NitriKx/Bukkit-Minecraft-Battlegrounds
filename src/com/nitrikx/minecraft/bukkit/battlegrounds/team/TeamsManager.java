@@ -13,7 +13,8 @@ import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
 public class TeamsManager {
 	
 	private static final Logger log = Logger.getLogger("Battlegrounds");
-	public static Battlegrounds plugin;
+	
+	public static Battlegrounds plugin = Battlegrounds.plugin;
 	
 	private static TeamsManager singleton;
 	
@@ -30,7 +31,7 @@ public class TeamsManager {
 	 * @return
 	 */
 	public static TeamsManager getInstance() {
-        if (singleton.equals(null)) { // Premier appel
+        if (singleton == null) { // Premier appel
             singleton = new TeamsManager();
         }
         return singleton;
@@ -71,6 +72,14 @@ public class TeamsManager {
 		
 		return isAvailable;
 		
+	}
+
+	public List<TeamStub> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<TeamStub> teams) {
+		this.teams = teams;
 	}
 	
 	

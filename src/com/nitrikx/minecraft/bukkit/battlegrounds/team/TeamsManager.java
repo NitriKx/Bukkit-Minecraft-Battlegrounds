@@ -1,5 +1,6 @@
 package com.nitrikx.minecraft.bukkit.battlegrounds.team;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,8 +23,13 @@ public class TeamsManager {
 	
 	
 	private TeamsManager(){
+		this.teams = new ArrayList<TeamStub>();
 		
-
+		//Add fake values to test command
+		this.teams.add(new TeamStub("test", new ArrayList<String>(), new ArrayList<String>(), "nitrikx", TeamColors.Blue));
+		this.teams.add(new TeamStub("test2", new ArrayList<String>(), new ArrayList<String>(), "nitrikx", TeamColors.Blue));
+		this.teams.add(new TeamStub("test3", new ArrayList<String>(), new ArrayList<String>(), "nitrikx", TeamColors.Blue));
+		
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin;
+package com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams;
 
 import java.util.logging.Logger;
 
@@ -7,39 +7,37 @@ import org.bukkit.command.CommandSender;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.errors.ErrorMessage;
 
-public class Help {
+public class HelpTeam {
 	
 	private static final Logger log = Logger.getLogger("Batlegrounds");
 	
+	private static final String suffix = "/bg team ";
+	
 	public static String[] commandsName = {
-		"/bg version",
-		"/bg help",
-		"/bg team"
+		"list"
 	};
 	
 	public static String[] commandsDescription = {
-		"get the version of battlegrounds.",
-		"get this help",
-		"get help for team sub-section"
+		"get the list of teams"
 	};
 	
-	public static void sendHelp(CommandSender sender){
+	public static void sendHelpTeam(CommandSender sender){
 		
 		if(commandsName.length != commandsDescription.length){
 			log.severe("Problem during help generation.");
 			sender.sendMessage(ErrorMessage.CommandFail);
 		}
 		else{
-		
 			sender.sendMessage(ChatColor.RED + "Battlegrounds help : ");
 			
 			//Print all the command descriptions
 			for(int i = 0 ; i < commandsName.length ; i++){
-				sender.sendMessage(commandsName[i] + " : " + commandsDescription[i]);
+				sender.sendMessage(suffix + commandsName[i] + " : " + commandsDescription[i]);
 			}
 			
 			sender.sendMessage(ChatColor.RED + "END");
 		}
 	}
+	
 	
 }

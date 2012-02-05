@@ -6,8 +6,10 @@ import org.bukkit.entity.Player;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.Help;
+import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.PluginInterpreter;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.Version;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.ListTeams;
+import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.TeamsInterpreter;
 
 public class InterpretCommand {
 	
@@ -20,33 +22,25 @@ public class InterpretCommand {
     		return true;
     	}
     	else{
+    		
+    		//
+	    	//TEAMS COMMANDS
+	    	//
+
+	    	if(args[0].equalsIgnoreCase("teams")){ 
+	    		return TeamsInterpreter.interpret(sender, cmd, commandLabel, args);
+	    	}
+    		
+    		
 			//
     		//PLUGIN COMMANDS
     		//
     		
-	    	if(args[0].equalsIgnoreCase(BattlegroundsCommands.Version)){
-	    		Version.sendVersion((Player) sender, Battlegrounds.plugin);
-	    		return true;
+	    	else{
+	    		return PluginInterpreter.interpret(sender, cmd, commandLabel, args);
 	    	}
-	    	else if(args[0].equalsIgnoreCase(BattlegroundsCommands.Help)){
-	    		Help.sendHelp((Player) sender);
-	    		return true;
-	    	}
-	    	
-	    	
-	    	//
-	    	//TEAMS COMMANDS
-	    	//
-
-	    	else if(args[0].equalsIgnoreCase(BattlegroundsCommands.ListTeams)){ 
-	    		ListTeams.listAllTeams((Player) sender);
-	    		return true;
-	    	}
-	    	
-	    	
+	    		
     	}
-		//If this has happened the function will break and return true. if this hasn't happened the a value of false will be returned.
-		return false;
 	}
 	
 	

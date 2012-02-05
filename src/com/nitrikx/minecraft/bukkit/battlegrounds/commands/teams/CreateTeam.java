@@ -34,11 +34,12 @@ public class CreateTeam {
 				String name = args[2];
 				
 				//If name is too long of too short
-				if(name.length() < ConfigBG.minTeamNameLength || name.length() < ConfigBG.maxTeamNameLength){
+				if(name.length() < ConfigBG.minTeamNameLength || name.length() > ConfigBG.maxTeamNameLength){
 					sender.sendMessage(ChatColor.RED + "Your team name is too long or too short.");
 				}
 				else if(TeamsManager.getInstance().isTeamNameAvailable(name)){
 					TeamsManager.getInstance().createTeam(name);
+					sender.sendMessage(ChatColor.GREEN + String.format("Team [%s] created.", name));
 				}
 				else{
 					sender.sendMessage(ChatColor.YELLOW + "This team already exist.");

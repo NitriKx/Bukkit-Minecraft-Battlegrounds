@@ -4,7 +4,29 @@ version: 0.1
 description: >
              Battlegrounds
 commands:
-   bg:
-      description: Get help of battlegrounds.
-      permission: battlegrounds.basic
-      usage: "Get list of commands : /bg [help]"
+    bg:
+        description: Get help of battlegrounds.
+        permission: battlegrounds.basic
+        usage: "Get list of commands : /bg [help]"
+permissions:
+    battlegrounds.*:
+        description: Can manage all the battlegrounds options.
+        default: op
+        children:
+            battlegrounds.team.*: true
+    battlegrounds.team.*:
+        description: Can manage teams.
+        default: op
+        children:
+            battlegrounds.team.create: true
+            battlegrounds.team.delete: true
+            battlegrounds.team.manageplayer: true
+    battlegrounds.team.create:
+        description: Can create a team.
+        default: op
+    battlegrounds.team.delete:
+        description: Can delete a team.
+        default: op
+    battlegrounds.team.manageplayer:
+        description: Can add/pick out a player from a team.
+        default: op

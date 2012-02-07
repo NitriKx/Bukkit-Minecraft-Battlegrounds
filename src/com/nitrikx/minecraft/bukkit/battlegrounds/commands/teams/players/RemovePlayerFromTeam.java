@@ -10,45 +10,46 @@ import com.nitrikx.minecraft.bukkit.battlegrounds.team.TeamsManager;
 public class RemovePlayerFromTeam {
 	
 	public static final String usage = ChatColor.YELLOW + "/" + BattlegroundsCommands.suffix + " " 
-			+ BattlegroundsCommands.Team.suffix + " " + BattlegroundsCommands.Team.RemovePlayer
+			+ BattlegroundsCommands.Team.suffix + " "
+			+ BattlegroundsCommands.Team.Player.suffix + " " + BattlegroundsCommands.Team.Player.Remove
 			+ " <playername>"; 
 	
 	public static void remove(CommandSender sender, String[] args){
 		
-		//If user allowed
-		if(sender.hasPermission("battlegrounds.team.player.remove")){
 			
-		//team + addplayer + player
-		if(args.length < 2+1){
+		//team + player + add + player
+		if(args.length < 2+2){
 			sender.sendMessage(ErrorMessage.MissingParameters);
 		}
 		else{
-			String playerName = args[2];
-
+			
+			String playerName = args[3];
 			String playerTeam = TeamsManager.getInstance().retrievePlayerTeam(playerName);
-					
+			
 			//If player has a team
 			if(!playerTeam.equals("")){
 				
-				//If player can be added
-				if(TeamsManager.getInstance().removePlayerFromTeam(playerName)){
-					sender.sendMessage(ChatColor.GREEN + String.format("[%s] removed from [%s].", playerName, playerTeam));
+				//If user allowed (permission or admin of player team)
+				if(sender.hasPermission("battlegrounds.team.player.remove") || TeamsManager.getInstance().isAdminOfPlayer(sender.getName(), args[3])){
+					
+					//If player can be added
+					if(TeamsManager.getInstance().removePlayerFromTeam(playerName)){
+						sender.sendMessage(ChatColor.GREEN + String.format("[%s] removed from [%s].", playerName, playerTeam));
+					}
+					else{
+						sender.sendMessage(ChatColor.RED + String.format("Can not remove [%s] from [%s].", playerName, playerTeam));
+					}
+					
 				}
+				//Else not allowed
 				else{
-					sender.sendMessage(ChatColor.RED + String.format("Can not remove [%s] from [%s].", playerName, playerTeam));
+					sender.sendMessage(ErrorMessage.NotAllowed);
 				}
-				
 			}
 			else{
 				sender.sendMessage(ChatColor.RED + String.format("%s has no team.", playerName));
 			}
 					
-			}
-				
-		}
-		//Else not allowed
-		else{
-			sender.sendMessage(ErrorMessage.NotAllowed);
 		}
 				
 	}

@@ -4,8 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.BattlegroundsCommands;
-import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.players.AddPlayerToTeam;
-import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.players.RemovePlayerFromTeam;
+import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.players.TeamPlayerInterpreter;
 
 public class TeamsInterpreter {
 	
@@ -32,12 +31,9 @@ public class TeamsInterpreter {
 			DeleteTeam.delete(sender, args);
 			return true;
 		}
-		else if(args[1].equalsIgnoreCase(BattlegroundsCommands.Team.AddPlayer)){
-			AddPlayerToTeam.add(sender, args);
-			return true;
-		}
-		else if(args[1].equalsIgnoreCase(BattlegroundsCommands.Team.RemovePlayer)){
-			RemovePlayerFromTeam.remove(sender, args);
+		//If player sub-category
+		else if(args[1].equalsIgnoreCase(BattlegroundsCommands.Team.Player.suffix)){
+			TeamPlayerInterpreter.interpret(sender, args);
 			return true;
 		}
 		

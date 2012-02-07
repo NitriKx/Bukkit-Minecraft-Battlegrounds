@@ -18,6 +18,7 @@ permissions:
             battlegrounds.basic: true
     battlegrounds.basic:
         description: Basic permissions for Battlegrounds mod.
+        default: true
     battlegrounds.version:
         description: Get version of Battlegrounds.
     battlegrounds.team.*:
@@ -39,5 +40,7 @@ permissions:
         description: Can add a player to a team.
     battlegrounds.team.player.remove:
         description: Can remove a player from a team.
+    battlegrounds.team.player.list:
+        description: Can all player of a team.
     battlegrounds.team.player.admin:
         description: Can set a player team administrator.  

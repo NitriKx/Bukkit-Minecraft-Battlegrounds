@@ -101,6 +101,24 @@ public class TeamsManager {
 	}
 	
 	/**
+	 * Check is player 1 is admin of player 2 (player can be an admin).
+	 * @param playerName1 The name of the player 1
+	 * @param playerName2 The name of the player 2
+	 * @return True if player1 is an admin of player2. False else.
+	 */
+	public boolean isAdminOfPlayer(String playerName1, String playerName2){
+		boolean isAdmin = false;
+		
+		for(TeamStub team : this.teams){
+			if(team.hasAdmin(playerName1) && team.hasPlayer(playerName2)){
+				isAdmin = true;
+			}
+		}
+		
+		return isAdmin;
+	}
+	
+	/**
 	 * Search for the team of a player.
 	 * @param playerName The player name.
 	 * @return The team name if found. Empty string else.

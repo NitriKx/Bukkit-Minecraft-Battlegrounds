@@ -1,15 +1,13 @@
 package com.nitrikx.minecraft.bukkit.battlegrounds.commands;
 
 /**
- * Hierarchical list of all BG commands.
+ * Hierarchical list of all Battlegrounds commands.
  * @author NitriKx
  *
  */
 public class BattlegroundsCommands {
 	
 	public static final String suffix = "bg";
-	
-	public static final String ListTeams = "listteams";
 	
 	public static final String Version = "version";
 	
@@ -26,9 +24,15 @@ public class BattlegroundsCommands {
 		
 		public static final String Delete = "delete";
 		
-		public static final String AddPlayer = "addplayer"; 
+		public class Player{
+			public static final String suffix = "player";
+			
+			public static final String Add = "add"; 
+			
+			public static final String Remove = "remove"; 
+		}
 		
-		public static final String RemovePlayer = "removeplayer"; 
+		
 	}
 }
 

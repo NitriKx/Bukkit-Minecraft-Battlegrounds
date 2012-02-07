@@ -12,7 +12,8 @@ import com.nitrikx.minecraft.bukkit.battlegrounds.tools.Tools;
 public class AddPlayerToTeam {
 	
 	public static final String usage = ChatColor.YELLOW + "/" + BattlegroundsCommands.suffix + " " 
-			+ BattlegroundsCommands.Team.suffix + " " + BattlegroundsCommands.Team.AddPlayer
+			+ BattlegroundsCommands.Team.suffix + " "
+			+ BattlegroundsCommands.Team.Player.suffix + " " + BattlegroundsCommands.Team.Player.Add
 			+ " <playername> <teamname>"; 
 	
 	/**
@@ -25,13 +26,13 @@ public class AddPlayerToTeam {
 		//If user allowed
 		if(sender.hasPermission("battlegrounds.team.player.add") || TeamsManager.getInstance().isAdminOf(args[3], args[4])){
 			
-			//team + addplayer + player + team
-			if(args.length < 2+2){
+			//team + player + add + player + team
+			if(args.length < 2+3){
 				sender.sendMessage(ErrorMessage.MissingParameters);
 			}
 			else{
-				String playerName = args[2];
-				String teamName = args[3];
+				String playerName = args[3];
+				String teamName = args[4];
 				
 				//If team name length is correct
 				if(teamName.length() > ConfigBG.maxTeamNameLength || teamName.length() < ConfigBG.minTeamNameLength){

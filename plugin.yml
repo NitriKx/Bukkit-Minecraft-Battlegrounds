@@ -39,3 +39,5 @@ permissions:
         description: Can add a player to a team.
     battlegrounds.team.player.remove:
         description: Can remove a player from a team.
+    battlegrounds.team.player.admin:
+        description: Can set a player team administrator.  

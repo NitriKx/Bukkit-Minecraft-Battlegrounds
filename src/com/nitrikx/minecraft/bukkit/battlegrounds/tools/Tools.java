@@ -6,6 +6,11 @@ import org.bukkit.entity.Player;
 
 public class Tools {
 	
+	/**
+	 * Check if a player is online.
+	 * @param playerName The name of the player.
+	 * @return True if player is online. False else.
+	 */
 	public static boolean isPlayerOnline(String playerName){
 		
 		boolean isOnline = true;

@@ -2,8 +2,12 @@ package com.nitrikx.minecraft.bukkit.battlegrounds.team;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
+
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.config.ConfigBG;
 
@@ -12,7 +16,7 @@ import com.nitrikx.minecraft.bukkit.battlegrounds.config.ConfigBG;
  * @author NitriKx
  *
  */
-public class TeamStub {
+public class TeamStub implements ConfigurationSerializable{
 	
 	private static Logger log = Logger.getLogger("Battlegrounds");
 	
@@ -26,24 +30,19 @@ public class TeamStub {
 	
 	private String creator;
 	
-	private TeamColors color;
+	private String color;
+	
 	
 	/**
-	 * Create a team.
-	 * @param name The name of the team.
-	 * @param members A list of String, which is the list of members (including admins)
-	 * @param admins A list of Player BG, which is the list of admins
-	 * @param creationDate The creation date of the team
-	 * @param creator The name of the player which create the team
-	 * @param color The color of the team
+	 * YAML deserializer.
 	 */
-	public TeamStub(String name, List<String> members, List<String> admins, Date creationDate, String creator, TeamColors color) {
-		this.name = name;
-		this.members = members;
-		this.admins = admins;
-		this.creationDate = creationDate;
-		this.creator = creator;
-		this.color = color;
+	public TeamStub(Map<String, Object> map){
+		this.name = (String) map.get("name");
+		this.members = (List<String>) map.get("members");
+		this.admins = (List<String>) map.get("admins");
+		this.creationDate = (Date) map.get("creationDate");
+		this.creator = (String) map.get("creator");
+		this.color = (String) map.get("color");
 	}
 	
 	/**
@@ -54,7 +53,7 @@ public class TeamStub {
 	 * @param creator The name of the player which create the team
 	 * @param color The color of the team
 	 */
-	public TeamStub(String name, List<String> members, List<String> admins, String creator, TeamColors color) {
+	public TeamStub(String name, List<String> members, List<String> admins, String creator, String color) {
 		this.name = name;
 		this.members = members;
 		this.admins = admins;
@@ -177,6 +176,31 @@ public class TeamStub {
 	}
 	
 	
+	/**
+	 * YAML serializer.
+	 */
+	public final Map<String, Object> serialize() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("name", this.name);
+		map.put("members", this.members);
+		map.put("admins", this.admins);
+		map.put("creationDate", this.creationDate);
+		map.put("creator", this.creator);
+		map.put("color", this.color);
+		
+		return map;
+	}
+	
+	/**
+	 * YAML valueOf deserializer.
+	 * @param map
+	 * @return
+	 */
+	public static TeamStub valueOf(Map<String, Object> map){
+		return new TeamStub(map);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -217,13 +241,12 @@ public class TeamStub {
 		this.creator = creator;
 	}
 
-	public TeamColors getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(TeamColors color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
-	
-	
+
 }

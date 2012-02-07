@@ -35,17 +35,10 @@ public class PlayerManager {
 		return singleton;
 	}
 	
-	public boolean addPlayer(String playerName){
+	public List<String> getPlayerInfos(String playerName){
 		
-		boolean isAdded = false;
 		
-		//If player not already in the list
-		if(!this.players.contains(playerName)){
-			this.players.add(playerName);
-			isAdded = true;
-		}
-		
-		return isAdded;
+		return null;
 	}
 
 	public List<String> getPlayer() {

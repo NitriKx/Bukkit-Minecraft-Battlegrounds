@@ -25,6 +25,10 @@ public class BattlegroundsCommands {
 		public static final String Create = "create";
 		
 		public static final String Delete = "delete";
+		
+		public static final String AddPlayer = "addplayer"; 
+		
+		public static final String RemovePlayer = "removeplayer"; 
 	}
 }
 

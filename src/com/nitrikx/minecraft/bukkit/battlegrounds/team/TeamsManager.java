@@ -43,13 +43,12 @@ public class TeamsManager {
 	 * @param teamName The name of the team.
 	 * @param player The player to add.
 	 */
-	public boolean addPlayerToTeam(String teamName, String player){
-		
+	public boolean addPlayerToTeam(String playerName, String teamName){
 		boolean added = false;
 		
 		for(TeamStub team : this.teams){
 			if(team.getName().equals(teamName)){
-				added = team.addPlayer(player);
+				added = team.addPlayer(playerName);
 			}
 		}
 		
@@ -80,6 +79,42 @@ public class TeamsManager {
 	 */
 	public boolean isTeamExist(String name){
 		return !isTeamNameAvailable(name);
+	}
+	
+	/**
+	 * Check if a player is admin of a team
+	 * @param playerName The name of the player
+	 * @param teamName The name of the team
+	 * @return True if admin, false else
+	 */
+	public boolean isAdminOf(String playerName, String teamName){
+		boolean isAdmin = false;
+		
+		for(TeamStub team : this.teams){
+			if(team.getName().equals(teamName) && team.hasAdmin(playerName)){
+				isAdmin = true;
+			}
+		}
+		
+		return isAdmin;
+	}
+	
+	/**
+	 * Search for the team of a player.
+	 * @param playerName The player name.
+	 * @return The team name if found. Empty string else.
+	 */
+	public String retrievePlayerTeam(String playerName){
+		String teamName = "";
+		
+		for(TeamStub team : this.teams){
+			if(team.hasPlayer(playerName)){
+				teamName = team.getName();
+			}
+		}
+		
+		return teamName;
+		
 	}
 	
 	/**

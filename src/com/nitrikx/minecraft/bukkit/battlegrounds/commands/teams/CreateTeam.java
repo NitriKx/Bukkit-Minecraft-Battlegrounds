@@ -35,7 +35,7 @@ public class CreateTeam {
 				
 				//If name is too long of too short
 				if(name.length() < ConfigBG.minTeamNameLength || name.length() > ConfigBG.maxTeamNameLength){
-					sender.sendMessage(ChatColor.RED + "Your team name is too long or too short.");
+					sender.sendMessage(ErrorMessage.InvalidNameLength);
 				}
 				else if(TeamsManager.getInstance().isTeamNameAvailable(name)){
 					TeamsManager.getInstance().createTeam(name);

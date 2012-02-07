@@ -16,19 +16,25 @@ public class HelpTeam {
 	public static String[] commandsName = {
 		"list",
 		"create",
-		"delete"
+		"delete",
+		"addplayer",
+		"removeplayer"
 	};
 	
 	public static String[] commandsDescription = {
 		"get the list of teams.",
 		"create a team.",
-		"delete a team."
+		"delete a team.",
+		"add a player to a team",
+		"remove a player from his team"
 	};
 	
 	public static String[] commandsArgs = {
 		"",
 		" <teamname>",
-		" <teamname>"
+		" <teamname>",
+		" <playername> <teamname>",
+		" <playername>"
 	};
 	
 	public static void sendHelpTeam(CommandSender sender){
@@ -38,14 +44,12 @@ public class HelpTeam {
 			sender.sendMessage(ErrorMessage.CommandFail);
 		}
 		else{
-			sender.sendMessage(ChatColor.RED + "Battlegrounds help : ");
+			sender.sendMessage(ChatColor.RED + "Battlegrounds team help : ");
 			
 			//Print all the command descriptions
 			for(int i = 0 ; i < commandsName.length ; i++){
 				sender.sendMessage(suffix + commandsName[i] + commandsArgs[i] + " : " + commandsDescription[i]);
 			}
-			
-			sender.sendMessage(ChatColor.RED + "end help");
 		}
 	}
 	

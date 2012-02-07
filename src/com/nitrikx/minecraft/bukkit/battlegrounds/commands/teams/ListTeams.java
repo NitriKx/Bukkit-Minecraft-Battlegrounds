@@ -21,11 +21,9 @@ public class ListTeams {
 		else{
 			//If no teams
 			if(TeamsManager.getInstance().getTeams().size() == 0){
-				sender.sendMessage(ChatColor.YELLOW + "No team found");
+				sender.sendMessage(ChatColor.YELLOW + "No team found.");
 			}
 			else{
-				sender.sendMessage("Teams are : ");
-				
 				for(TeamStub team : TeamsManager.getInstance().getTeams()){
 					sender.sendMessage(ChatColor.GREEN + team.getName());
 				}

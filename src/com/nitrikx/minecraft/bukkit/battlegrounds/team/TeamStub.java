@@ -90,35 +90,18 @@ public class TeamStub implements ConfigurationSerializable{
 	 * Add a player to the team
 	 * @param player A PlayerBG object, which represent the player to add.
 	 * @return True if player can be added
-	 * @throws PlayerAlreadyInTeamException 
-	 * @throws TeamFullException 
 	 */
-	public boolean addPlayer(String player){
+	public boolean addPlayer(String playerName){
 		
-		boolean canBeAdded = false;
+		boolean canBeAdded = true;
 		
-		for(String playerBG : this.members){
-			
-			//if player already in team
-			if(playerBG.equals(player)){
-				canBeAdded = false;
-			}
-			
+		//If player has no team and team is not full
+		if(TeamsManager.getInstance().retrievePlayerTeam(playerName).equals("")
+				&& this.members.size() < ConfigBG.maxPlayerPerTeam){
+			this.members.add(playerName);
 		}
-		
-		//If the player is not ever in the team
-		if(canBeAdded && this.members.size() < ConfigBG.maxPlayerPerTeam){
-			this.members.add(player);
-		}
-		
-		//If team contains the player
-		if(!canBeAdded){
-			log.info(String.format("The team [%s] already contains the player [%s].", this.getName(), player));
-		}
-		
-		//If the is full
-		if(this.members.size() >= ConfigBG.maxPlayerPerTeam){
-			log.info(String.format("The team [%s] is full (max : [%d]).", this.getName(), ConfigBG.maxPlayerPerTeam));
+		else{
+			canBeAdded = false;
 		}
 		
 		return canBeAdded;
@@ -152,7 +135,7 @@ public class TeamStub implements ConfigurationSerializable{
 	}
 	
 	/**
-	 * 
+	 * Set a player admin of his team
 	 * @param playerName
 	 * @return
 	 */
@@ -173,6 +156,40 @@ public class TeamStub implements ConfigurationSerializable{
 		}
 		
 		return isSetAdmin;
+	}
+	
+	/**
+	 * Check if a player is a member of the team
+	 * @param playerName
+	 * @return
+	 */
+	public boolean hasPlayer(String playerName){
+		boolean isMember = false;
+		
+		for(String player : this.members){
+			if(player.equalsIgnoreCase(playerName)){
+				isMember = true;
+			}
+		}
+		
+		return isMember;
+	}
+	
+	/**
+	 * Check if a player is an admin of the team
+	 * @param playerName
+	 * @return
+	 */
+	public boolean hasAdmin(String playerName){
+		boolean isAdmin = false;
+		
+		for(String admin : this.admins){
+			if(admin.equalsIgnoreCase(playerName)){
+				isAdmin = true;
+			}
+		}
+		
+		return isAdmin;
 	}
 	
 	

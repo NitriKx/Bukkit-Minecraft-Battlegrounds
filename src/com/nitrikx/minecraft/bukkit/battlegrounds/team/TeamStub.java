@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
-import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
 import com.nitrikx.minecraft.bukkit.battlegrounds.config.ConfigBG;
 
 /**
@@ -19,6 +18,7 @@ import com.nitrikx.minecraft.bukkit.battlegrounds.config.ConfigBG;
  */
 public class TeamStub implements ConfigurationSerializable{
 	
+	@SuppressWarnings("unused")
 	private static Logger log = Logger.getLogger("Battlegrounds");
 	
 	private String name;

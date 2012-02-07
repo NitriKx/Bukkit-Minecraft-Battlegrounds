@@ -18,7 +18,7 @@ public class Battlegrounds extends JavaPlugin{
 	
 	public static Battlegrounds plugin;
 	
-	public static final String logSuffix = "[" + Battlegrounds.plugin.getDescription().getName() + "] ";
+	public static String logSuffix;
 	
 	public static TeamConfig teamConfig;
 	
@@ -31,6 +31,7 @@ public class Battlegrounds extends JavaPlugin{
 	public void onEnable(){
 		
 		Battlegrounds.plugin = this;
+		Battlegrounds.logSuffix = "[" + Battlegrounds.plugin.getDescription().getName() + "] ";
 		
 		//register object for deserialization
 		ConfigurationSerialization.registerClass(TeamStub.class);

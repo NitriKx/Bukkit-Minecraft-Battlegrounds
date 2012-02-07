@@ -18,50 +18,35 @@ public class RemovePlayerFromTeam {
 	public static void remove(CommandSender sender, String[] args){
 		
 		//If user allowed
-		if(sender.hasPermission("battlegrounds.team.player.remove") || TeamsManager.getInstance().isAdminOf(args[3], args[4])){
+		if(sender.hasPermission("battlegrounds.team.player.remove")){
 			
-			//team + addplayer + player + team
-			if(args.length < 2+2){
-				sender.sendMessage(ErrorMessage.MissingParameters);
-			}
-			else{
-				String playerName = args[2];
-				String teamName = args[3];
+		//team + addplayer + player
+		if(args.length < 2+1){
+			sender.sendMessage(ErrorMessage.MissingParameters);
+		}
+		else{
+			String playerName = args[2];
+
+			String playerTeam = TeamsManager.getInstance().retrievePlayerTeam(playerName);
+					
+			//If player has a team
+			if(!playerTeam.equals("")){
 				
-				//If team name length  is correct
-				if(teamName.length() > ConfigBG.maxTeamNameLength || teamName.length() < ConfigBG.minTeamNameLength){
-					sender.sendMessage(ErrorMessage.InvalidNameLength);
+				//If player can be added
+				if(TeamsManager.getInstance().removePlayerFromTeam(playerName)){
+					sender.sendMessage(ChatColor.GREEN + String.format("[%s] removed from [%s].", playerName, playerTeam));
 				}
 				else{
-					//If player is online
-					if(Tools.isPlayerOnline(playerName)){
-						
-						String playerTeam = TeamsManager.getInstance().retrievePlayerTeam(playerName);
-						
-						//If player has not team
-						if(playerTeam.equals("")){
-							
-							//If player can be added
-							if(TeamsManager.getInstance().addPlayerToTeam(playerName, teamName)){
-								sender.sendMessage(ChatColor.GREEN + String.format("[%s] added in [%s].", playerName, teamName));
-							}
-							else{
-								sender.sendMessage(ChatColor.RED + String.format("Can not add [%s] in [%s]. Team is full ?", playerName, teamName));
-							}
-							
-						}
-						else{
-							sender.sendMessage(ChatColor.RED + String.format("Player is already in a team (%s)", playerTeam));
-						}
-						
-					}
-					else{
-						sender.sendMessage(ErrorMessage.OfflinePlayer);
-					}
+					sender.sendMessage(ChatColor.RED + String.format("Can not remove [%s] from [%s].", playerName, playerTeam));
 				}
 				
 			}
-			
+			else{
+				sender.sendMessage(ChatColor.RED + String.format("%s has no team.", playerName));
+			}
+					
+			}
+				
 		}
 		//Else not allowed
 		else{

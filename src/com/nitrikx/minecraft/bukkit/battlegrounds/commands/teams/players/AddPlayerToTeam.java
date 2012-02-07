@@ -33,7 +33,7 @@ public class AddPlayerToTeam {
 				String playerName = args[2];
 				String teamName = args[3];
 				
-				//If team name length  is correct
+				//If team name length is correct
 				if(teamName.length() > ConfigBG.maxTeamNameLength || teamName.length() < ConfigBG.minTeamNameLength){
 					sender.sendMessage(ErrorMessage.InvalidNameLength);
 				}
@@ -43,7 +43,7 @@ public class AddPlayerToTeam {
 						
 						String playerTeam = TeamsManager.getInstance().retrievePlayerTeam(playerName);
 						
-						//If player has not team
+						//If player has no team
 						if(playerTeam.equals("")){
 							
 							//If player can be added
@@ -51,12 +51,12 @@ public class AddPlayerToTeam {
 								sender.sendMessage(ChatColor.GREEN + String.format("[%s] added in [%s].", playerName, teamName));
 							}
 							else{
-								sender.sendMessage(ChatColor.RED + String.format("Can not add [%s] in [%s]. Team is full ?", playerName, teamName));
+								sender.sendMessage(ChatColor.RED + String.format("Can not add [%s] in [%s]. Team is full or does not exist ?", playerName, teamName));
 							}
 							
 						}
 						else{
-							sender.sendMessage(ChatColor.RED + String.format("Player is already in a team (%s)", playerTeam));
+							sender.sendMessage(ChatColor.RED + String.format("%s is already in a team (%s)", playerName, playerTeam));
 						}
 						
 					}

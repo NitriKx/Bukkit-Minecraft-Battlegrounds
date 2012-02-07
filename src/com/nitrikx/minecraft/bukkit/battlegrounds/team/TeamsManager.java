@@ -118,6 +118,25 @@ public class TeamsManager {
 	}
 	
 	/**
+	 * Remove a player from his team.
+	 * @param playerName The name of the player.
+	 * @param teamName The name of the player team.
+	 * @return True if player removed from a team. False else.
+	 */
+	public boolean removePlayerFromTeam(String playerName){
+		boolean isRemoved = false;
+		
+		for(TeamStub team : this.teams){
+			if(team.hasPlayer(playerName)){
+				team.removePlayer(playerName);
+				isRemoved = true;
+			}
+		}
+		
+		return isRemoved;
+	}
+	
+	/**
 	 * Create a team.
 	 * @param name The name of the team.
 	 * @return True if team can be create. Else false.

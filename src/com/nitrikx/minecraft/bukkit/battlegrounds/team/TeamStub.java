@@ -109,7 +109,7 @@ public class TeamStub implements ConfigurationSerializable{
 	
 	/**
 	 * Remove a player from the team.
-	 * @param player A PlayerBG object, which represent the player to delete.
+	 * @param player The name of the player.
 	 * @return True if the player is removed, False else.
 	 */
 	public boolean removePlayer(String player){

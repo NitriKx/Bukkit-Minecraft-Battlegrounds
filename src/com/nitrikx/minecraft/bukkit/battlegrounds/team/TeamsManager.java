@@ -25,11 +25,6 @@ public class TeamsManager {
 	private TeamsManager(){
 		this.teams = new ArrayList<TeamStub>();
 		
-		//Add fake values to test command
-		this.teams.add(new TeamStub("test", new ArrayList<String>(), new ArrayList<String>(), "nitrikx", TeamColors.Blue));
-		this.teams.add(new TeamStub("test2", new ArrayList<String>(), new ArrayList<String>(), "nitrikx", TeamColors.Blue));
-		this.teams.add(new TeamStub("test3", new ArrayList<String>(), new ArrayList<String>(), "nitrikx", TeamColors.Blue));
-		
 	}
 	
 	/**
@@ -78,8 +73,40 @@ public class TeamsManager {
 		return isAvailable;
 	}
 	
+	/**
+	 * Verify if a team exist.
+	 * @param name The name of the team.
+	 * @return True if team exist. False else.
+	 */
+	public boolean isTeamExist(String name){
+		return !isTeamNameAvailable(name);
+	}
+	
+	/**
+	 * Create a team.
+	 * @param name The name of the team.
+	 * @return True if team can be create. Else false.
+	 */
 	public boolean createTeam(String name){
 		return this.teams.add(new TeamStub(name));
+	}
+	
+	/**
+	 * Delete a team.
+	 * @param name The team name.
+	 * @return True if team has been deleted, false else.
+	 */
+	public boolean deleteTeam(String name){
+		boolean isDelete = false;
+		
+		for(int i = 0 ; i < this.teams.size() ; i++){
+			if(teams.get(i).getName().equals(name)){
+				this.teams.remove(i);
+				isDelete =  true;
+			}
+		}
+		
+		return isDelete;
 	}
 
 	public List<TeamStub> getTeams() {

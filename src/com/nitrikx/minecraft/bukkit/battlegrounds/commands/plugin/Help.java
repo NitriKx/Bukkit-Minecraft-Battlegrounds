@@ -38,7 +38,7 @@ public class Help {
 				sender.sendMessage(commandsName[i] + " : " + commandsDescription[i]);
 			}
 			
-			sender.sendMessage(ChatColor.RED + "END");
+			sender.sendMessage(ChatColor.RED + "end help");
 		}
 	}
 	

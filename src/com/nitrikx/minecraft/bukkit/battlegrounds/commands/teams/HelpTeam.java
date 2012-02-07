@@ -14,11 +14,21 @@ public class HelpTeam {
 	private static final String suffix = "/bg team ";
 	
 	public static String[] commandsName = {
-		"list"
+		"list",
+		"create",
+		"delete"
 	};
 	
 	public static String[] commandsDescription = {
-		"get the list of teams"
+		"get the list of teams.",
+		"create a team.",
+		"delete a team."
+	};
+	
+	public static String[] commandsArgs = {
+		"",
+		" <teamname>",
+		" <teamname>"
 	};
 	
 	public static void sendHelpTeam(CommandSender sender){
@@ -32,10 +42,10 @@ public class HelpTeam {
 			
 			//Print all the command descriptions
 			for(int i = 0 ; i < commandsName.length ; i++){
-				sender.sendMessage(suffix + commandsName[i] + " : " + commandsDescription[i]);
+				sender.sendMessage(suffix + commandsName[i] + commandsArgs[i] + " : " + commandsDescription[i]);
 			}
 			
-			sender.sendMessage(ChatColor.RED + "END");
+			sender.sendMessage(ChatColor.RED + "end help");
 		}
 	}
 	

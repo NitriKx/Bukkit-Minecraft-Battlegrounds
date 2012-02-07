@@ -14,19 +14,28 @@ permissions:
         default: op
         children:
             battlegrounds.team.*: true
+            battlegrounds.version: true
+            battlegrounds.basic: true
+    battlegrounds.basic:
+        description: Basic permissions for Battlegrounds mod.
+    battlegrounds.version:
+        description: Get version of Battlegrounds.
     battlegrounds.team.*:
         description: Can manage teams.
-        default: op
         children:
             battlegrounds.team.create: true
             battlegrounds.team.delete: true
             battlegrounds.team.manageplayer: true
+    battlegrounds.team.manageplayers:
+        description: Can manage player into teams.
+        children:
+            battlegrounds.team.player.add: true
+            battlegrounds.team.player.remove: true
     battlegrounds.team.create:
         description: Can create a team.
-        default: op
     battlegrounds.team.delete:
         description: Can delete a team.
-        default: op
-    battlegrounds.team.manageplayer:
-        description: Can add/pick out a player from a team.
-        default: op
+    battlegrounds.team.player.add:
+        description: Can add a player to a team.
+    battlegrounds.team.player.remove:
+        description: Can remove a player from a team.

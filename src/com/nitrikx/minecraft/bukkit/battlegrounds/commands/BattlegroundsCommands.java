@@ -23,6 +23,8 @@ public class BattlegroundsCommands {
 		public static final String Help = "help";
 		
 		public static final String Create = "create";
+		
+		public static final String Delete = "delete";
 	}
 }
 

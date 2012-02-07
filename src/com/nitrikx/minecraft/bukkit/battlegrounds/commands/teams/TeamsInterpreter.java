@@ -26,6 +26,10 @@ public class TeamsInterpreter {
 			CreateTeam.create(sender, args);
 			return true;
 		}
+		else if(args[1].equalsIgnoreCase(BattlegroundsCommands.Team.Delete)){
+			DeleteTeam.delete(sender, args);
+			return true;
+		}
 		
 		return false;
 	}

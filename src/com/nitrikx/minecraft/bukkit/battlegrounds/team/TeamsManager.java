@@ -128,6 +128,17 @@ public class TeamsManager {
 		return isAdmin;
 	}
 	
+	public boolean isAllied(String player1, String player2){
+		
+		//If same team
+		if(TeamsManager.getInstance().retrievePlayerTeam(player1).equals(
+				TeamsManager.getInstance().retrievePlayerTeam(player2))){
+			return true;
+		}
+		
+		return false;	
+	}
+	
 	/**
 	 * Search for the team of a player.
 	 * @param playerName The player name.

@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.InterpretCommand;
 import com.nitrikx.minecraft.bukkit.battlegrounds.config.TeamConfig;
+import com.nitrikx.minecraft.bukkit.battlegrounds.player.PlayerDamageListener;
 import com.nitrikx.minecraft.bukkit.battlegrounds.team.TeamStub;
 import com.nitrikx.minecraft.bukkit.battlegrounds.team.TeamsManager;
 
@@ -33,7 +34,7 @@ public class Battlegrounds extends JavaPlugin{
 		Battlegrounds.plugin = this;
 		Battlegrounds.logSuffix = "[" + Battlegrounds.plugin.getDescription().getName() + "] ";
 		
-		//register object for deserialization
+		//Register object for deserialization
 		ConfigurationSerialization.registerClass(TeamStub.class);
 		
 		//Load teams
@@ -62,6 +63,11 @@ public class Battlegrounds extends JavaPlugin{
 	
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
     	return InterpretCommand.interpret(sender, cmd, commandLabel, args);
+    }
+    
+    private void registerListener(){
+    	
+    	plugin.getServer().getPluginManager().registerEvents(new PlayerDamageListener(), plugin);
     }
 
 }

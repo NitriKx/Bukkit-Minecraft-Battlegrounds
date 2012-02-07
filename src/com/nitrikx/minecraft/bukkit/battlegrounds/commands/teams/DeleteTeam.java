@@ -2,6 +2,7 @@ package com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams;
 
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -39,6 +40,14 @@ public class DeleteTeam {
 						sender.sendMessage(ChatColor.RED + "Your team name is too long or too short.");
 					}
 					else if(TeamsManager.getInstance().isTeamExist(name)){
+						
+						for(String teamPlayers : TeamsManager.getInstance().getTeamByName(name).getMembers()){
+							try{
+								Bukkit.getServer().getPlayer(teamPlayers).sendMessage(ChatColor.GOLD + String.format("Team %s has been deleted.", name));
+							}
+							catch(NullPointerException e){}
+						}
+						
 						TeamsManager.getInstance().deleteTeam(name);
 						sender.sendMessage(ChatColor.GREEN + String.format("Team [%s] delete.", name));
 					}

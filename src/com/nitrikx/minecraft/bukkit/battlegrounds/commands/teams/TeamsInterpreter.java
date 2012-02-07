@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.BattlegroundsCommands;
+import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.infos.TeamInfosInterpreter;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.players.TeamPlayerInterpreter;
 
 public class TeamsInterpreter {
@@ -34,6 +35,11 @@ public class TeamsInterpreter {
 		//If player sub-category
 		else if(args[1].equalsIgnoreCase(BattlegroundsCommands.Team.Player.suffix)){
 			TeamPlayerInterpreter.interpret(sender, args);
+			return true;
+		}
+		//If infos sub-category
+		else if(args[1].equalsIgnoreCase(BattlegroundsCommands.Team.Infos.suffix)){
+			TeamInfosInterpreter.interpret(sender, args);
 			return true;
 		}
 		

@@ -193,6 +193,31 @@ public class TeamStub implements ConfigurationSerializable{
 		return isAdmin;
 	}
 	
+	/**
+	 * Toggle administrator status for a player.
+	 * @param playerName The name of the player
+	 * @return True if player is now admin, False if not admin.
+	 */
+	public boolean toggleAdministrator(String playerName){
+		boolean isAdmin = false;
+		
+		for(String player : this.members){
+			if(player.equalsIgnoreCase(playerName)){
+				//If player is an administrator
+				if(this.admins.contains(player)){
+					this.admins.remove(player);
+					isAdmin = false;
+				}
+				else{
+					//Set player administrator
+					this.admins.add(playerName);
+					isAdmin = true;
+				}
+				
+			}
+		}
+		return isAdmin;
+	}
 	
 	/**
 	 * YAML serializer.

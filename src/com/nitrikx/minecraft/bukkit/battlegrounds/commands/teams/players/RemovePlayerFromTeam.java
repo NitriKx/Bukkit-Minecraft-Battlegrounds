@@ -1,5 +1,6 @@
 package com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.players;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -35,6 +36,7 @@ public class RemovePlayerFromTeam {
 					//If player can be added
 					if(TeamsManager.getInstance().removePlayerFromTeam(playerName)){
 						sender.sendMessage(ChatColor.GREEN + String.format("[%s] removed from [%s].", playerName, playerTeam));
+						Bukkit.getServer().getPlayer(playerName).sendMessage(ChatColor.GOLD + String.format("You leave the %s team.", playerTeam));
 					}
 					else{
 						sender.sendMessage(ChatColor.RED + String.format("Can not remove [%s] from [%s].", playerName, playerTeam));

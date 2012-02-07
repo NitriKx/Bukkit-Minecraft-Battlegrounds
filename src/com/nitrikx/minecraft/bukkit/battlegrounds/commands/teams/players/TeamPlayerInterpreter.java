@@ -15,7 +15,7 @@ public class TeamPlayerInterpreter {
 	public static boolean interpret(CommandSender sender, String[] args){
 		//if no args : /bg team player
 		if(args.length < 3){
-			HelpPlayerTeam.sendHelpPlayerTeam(sender);
+			HelpPlayerTeam.sendHelp(sender);
 			return true;
 		}
 		else if(args[2].equalsIgnoreCase(BattlegroundsCommands.Team.Player.Add)){
@@ -24,6 +24,10 @@ public class TeamPlayerInterpreter {
 		}
 		else if(args[2].equalsIgnoreCase(BattlegroundsCommands.Team.Player.Remove)){
 			RemovePlayerFromTeam.remove(sender, args);
+			return true;
+		}
+		else if(args[2].equalsIgnoreCase(BattlegroundsCommands.Team.Player.Admin)){
+			TogglePlayerAdmin.toggle(sender, args);
 			return true;
 		}
 		

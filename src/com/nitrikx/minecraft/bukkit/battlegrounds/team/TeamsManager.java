@@ -57,6 +57,16 @@ public class TeamsManager {
 	}
 	
 	/**
+	 * Toggle administrator status for a player.
+	 * @param playerName The name of the player.
+	 * @return True if player is now admin, False if not admin.
+	 */
+	public boolean toggleAdministration(String playerName){
+		String teamName = retrievePlayerTeam(playerName);
+		return this.getTeamByName(teamName).toggleAdministrator(playerName);
+	}
+	
+	/**
 	 * Verify if a team name is available. 
 	 * @param name The wanted team name.
 	 * @return True if available, else false.
@@ -181,11 +191,29 @@ public class TeamsManager {
 		
 		return isDelete;
 	}
+	
+	/**
+	 * Get a TeamStub based on team name.
+	 * @param teamName The name of the team.
+	 * @return A TeamStub, which contains Team informations.
+	 */
+	public TeamStub getTeamByName(String teamName){
+		
+		TeamStub team = new TeamStub();
+		
+		for(TeamStub tmp : this.teams){
+			if(tmp.getName().equals(teamName)){
+				team = tmp;
+			}
+		}
+		
+		return team;
+	}
 
 	public List<TeamStub> getTeams() {
 		return teams;
 	}
-
+	
 	public void setTeams(List<TeamStub> teams) {
 		this.teams = teams;
 	}

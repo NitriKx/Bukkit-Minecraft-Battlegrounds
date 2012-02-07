@@ -30,8 +30,19 @@ public class BattlegroundsCommands {
 			public static final String Add = "add"; 
 			
 			public static final String Remove = "remove"; 
+			
+			public static final String List = "list"; 
+			
+			public static final String Admin = "admin";
 		}
 		
+		public class Infos{
+			public static final String suffix = "infos";
+			
+			public static final String ListPlayers = "players";
+			
+			public static final String ListAdmins = "admins"; 
+		}
 		
 	}
 }

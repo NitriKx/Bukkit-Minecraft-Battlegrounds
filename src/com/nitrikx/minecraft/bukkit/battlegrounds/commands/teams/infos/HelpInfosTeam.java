@@ -1,4 +1,4 @@
-package com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.players;
+package com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.infos;
 
 import java.util.logging.Logger;
 
@@ -7,28 +7,25 @@ import org.bukkit.command.CommandSender;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.errors.ErrorMessage;
 
-public class HelpPlayerTeam {
-
+public class HelpInfosTeam {
+	
 	private static final Logger log = Logger.getLogger("Batlegrounds");
 	
-	private static final String suffix = "/bg team player ";
+	private static final String suffix = "/bg team infos ";
 	
 	public static String[] commandsName = {
-		"add",
-		"remove",
-		"admin"
+		"players",
+		"admins",
 	};
 	
 	public static String[] commandsDescription = {
-		"add a player to a team.",
-		"remove a player from his team.",
-		"set/unset a player as his team administrator"
+		"list all players of a team.",
+		"list all administrators of a team."
 	};
 	
 	public static String[] commandsArgs = {
-		" <playername> <teamname>",
-		" <playername>",
-		" <playername>"
+		" <teamname>",
+		" <teamname> ",
 	};
 	
 	public static void sendHelp(CommandSender sender) {
@@ -47,5 +44,5 @@ public class HelpPlayerTeam {
 		}
 		
 	}
-
+	
 }

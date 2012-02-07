@@ -1,5 +1,6 @@
 package com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.players;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -50,6 +51,10 @@ public class AddPlayerToTeam {
 							//If player can be added
 							if(TeamsManager.getInstance().addPlayerToTeam(playerName, teamName)){
 								sender.sendMessage(ChatColor.GREEN + String.format("[%s] added in [%s].", playerName, teamName));
+								try{
+									Bukkit.getServer().getPlayer(playerName).sendMessage(ChatColor.GOLD + String.format("You are now in team %s.", teamName));
+								}
+								catch(NullPointerException e){}
 							}
 							else{
 								sender.sendMessage(ChatColor.RED + String.format("Can not add [%s] in [%s]. Team is full or does not exist ?", playerName, teamName));

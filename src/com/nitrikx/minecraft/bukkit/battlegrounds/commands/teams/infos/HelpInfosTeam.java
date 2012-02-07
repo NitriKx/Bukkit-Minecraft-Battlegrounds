@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
 import com.nitrikx.minecraft.bukkit.battlegrounds.errors.ErrorMessage;
 
 public class HelpInfosTeam {
@@ -31,7 +32,7 @@ public class HelpInfosTeam {
 	public static void sendHelp(CommandSender sender) {
 		
 		if(commandsName.length != commandsDescription.length){
-			log.severe("Problem during help generation.");
+			log.severe(Battlegrounds.logSuffix + "Problem during help generation.");
 			sender.sendMessage(ErrorMessage.CommandFail);
 		}
 		else{

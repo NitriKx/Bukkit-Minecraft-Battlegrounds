@@ -36,7 +36,7 @@ public class TeamConfig {
 		teamsConfig = YamlConfiguration.loadConfiguration(teamsConfigFile);
 		
 		if(!teamsConfigFile.exists()){
-			log.info("No team configuration file. Creating new one.");
+			log.info(Battlegrounds.logSuffix + "No team configuration file. Creating new one.");
 			this.setDefault();
 		}
 		
@@ -96,7 +96,7 @@ public class TeamConfig {
 	    	return true;
 	    	
 	    } catch (IOException ex) {
-	        Logger.getLogger(JavaPlugin.class.getName()).log(Level.SEVERE, "Could not save config to " + teamsConfigFile, ex);
+	        Logger.getLogger(JavaPlugin.class.getName()).log(Level.SEVERE, Battlegrounds.logSuffix + "Could not save config to " + teamsConfigFile, ex);
 	    }
 	    
 	    return false;

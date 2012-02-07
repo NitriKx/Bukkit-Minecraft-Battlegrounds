@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
+import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
 import com.nitrikx.minecraft.bukkit.battlegrounds.config.ConfigBG;
 
 /**
@@ -133,30 +134,6 @@ public class TeamStub implements ConfigurationSerializable{
 		}
 		
 		return isDelete;
-	}
-	
-	/**
-	 * Set a player admin of his team
-	 * @param playerName
-	 * @return
-	 */
-	public boolean setPlayerAdmin(String playerName){
-		
-		boolean isSetAdmin = true;
-		
-		if(this.admins.contains(playerName) || !this.members.contains(playerName)){
-			isSetAdmin = false;
-		}
-		
-		if(this.admins.contains(playerName)){
-			log.info(String.format("[%s] is already an admin of team [%s] !", playerName, this.getName()));
-		}
-		
-		if(!this.members.contains(playerName)){
-			log.info(String.format("[%s] is no in the team [%s] !", playerName, this.getName()));
-		}
-		
-		return isSetAdmin;
 	}
 	
 	/**

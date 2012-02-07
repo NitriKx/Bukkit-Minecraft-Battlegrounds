@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
 import com.nitrikx.minecraft.bukkit.battlegrounds.errors.ErrorMessage;
 import com.nitrikx.minecraft.bukkit.battlegrounds.team.TeamStub;
 import com.nitrikx.minecraft.bukkit.battlegrounds.team.TeamsManager;
@@ -15,7 +16,7 @@ public class ListTeams {
 	
 	public static void listAllTeams(CommandSender sender){
 		if(TeamsManager.getInstance().getTeams() == null){
-			log.severe("Teams are not initialized !");
+			log.severe(Battlegrounds.logSuffix + "Teams are not initialized !");
 			sender.sendMessage(ErrorMessage.CommandFail);
 		}
 		else{

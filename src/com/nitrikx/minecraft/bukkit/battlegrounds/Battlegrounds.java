@@ -18,6 +18,8 @@ public class Battlegrounds extends JavaPlugin{
 	
 	public static Battlegrounds plugin;
 	
+	public static final String logSuffix = "[" + Battlegrounds.plugin.getDescription().getName() + "] ";
+	
 	public static TeamConfig teamConfig;
 	
 	public Logger log = Logger.getLogger("Battlegrounds");
@@ -34,12 +36,12 @@ public class Battlegrounds extends JavaPlugin{
 		ConfigurationSerialization.registerClass(TeamStub.class);
 		
 		//Load teams
-		log.info("Loading teams...");
+		log.info(Battlegrounds.logSuffix + "Loading teams...");
 		teamConfig = new TeamConfig();
 		
 		TeamsManager.getInstance().setTeams(teamConfig.getTeams());
 		
-		log.info(this.getDescription().getName() + " is loaded.");
+		log.info(Battlegrounds.logSuffix + Battlegrounds.plugin.getDescription().getName() + "is now loaded.");
 	}
 	
 	/**
@@ -48,11 +50,13 @@ public class Battlegrounds extends JavaPlugin{
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onDisable(){
 		
-		log.info("Saving teams...");
+		log.info(Battlegrounds.logSuffix + "Saving teams...");
 		teamConfig.saveTeams(TeamsManager.getInstance().getTeams());
 		
-		log.info("Saving configurations files...");
+		log.info(Battlegrounds.logSuffix + "Saving configurations files...");
 		teamConfig.saveTeamConfig();
+		
+		log.info(Battlegrounds.logSuffix + Battlegrounds.plugin.getDescription().getName() + " is now unloaded.");
 	}
 	
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){

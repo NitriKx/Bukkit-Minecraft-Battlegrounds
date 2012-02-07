@@ -36,6 +36,7 @@ public class TeamStub implements ConfigurationSerializable{
 	/**
 	 * YAML deserializer.
 	 */
+	@SuppressWarnings("unchecked")
 	public TeamStub(Map<String, Object> map){
 		this.name = (String) map.get("name");
 		this.members = (List<String>) map.get("members");

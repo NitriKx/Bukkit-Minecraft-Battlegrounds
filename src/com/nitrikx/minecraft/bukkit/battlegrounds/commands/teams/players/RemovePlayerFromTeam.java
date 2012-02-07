@@ -4,10 +4,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.BattlegroundsCommands;
-import com.nitrikx.minecraft.bukkit.battlegrounds.config.ConfigBG;
 import com.nitrikx.minecraft.bukkit.battlegrounds.errors.ErrorMessage;
 import com.nitrikx.minecraft.bukkit.battlegrounds.team.TeamsManager;
-import com.nitrikx.minecraft.bukkit.battlegrounds.tools.Tools;
 
 public class RemovePlayerFromTeam {
 	

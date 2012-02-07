@@ -13,6 +13,7 @@ import com.nitrikx.minecraft.bukkit.battlegrounds.Battlegrounds;
  */
 public class TeamsManager {
 	
+	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger("Battlegrounds");
 	
 	public static Battlegrounds plugin = Battlegrounds.plugin;

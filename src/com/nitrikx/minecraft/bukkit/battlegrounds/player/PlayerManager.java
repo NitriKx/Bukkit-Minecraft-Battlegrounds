@@ -1,14 +1,12 @@
 package com.nitrikx.minecraft.bukkit.battlegrounds.player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.bukkit.entity.Player;
-
 public class PlayerManager {
 	
+	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger("Battleagrounds");
 	
 	private List<String> players;

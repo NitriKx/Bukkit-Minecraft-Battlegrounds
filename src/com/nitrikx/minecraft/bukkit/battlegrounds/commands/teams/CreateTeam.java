@@ -16,6 +16,7 @@ public class CreateTeam {
 			+ BattlegroundsCommands.Team.suffix + " " + BattlegroundsCommands.Team.Create
 			+ " <teamname>"; 
 	
+	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger("Battlegrounds");
 	
 	public static void create(CommandSender sender, String [] args){

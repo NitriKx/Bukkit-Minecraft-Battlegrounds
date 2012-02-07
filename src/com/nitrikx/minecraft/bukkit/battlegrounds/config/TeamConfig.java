@@ -122,7 +122,6 @@ public class TeamConfig {
 		return teams;
 	}
 
-	@SuppressWarnings("unused")
 	private void setTeams(List<TeamStub> teams) {
 		this.teams = teams;
 	}

@@ -1,7 +1,6 @@
 package com.nitrikx.minecraft.bukkit.battlegrounds.tools;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class Tools {

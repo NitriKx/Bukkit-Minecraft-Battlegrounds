@@ -1,7 +1,9 @@
 package com.nitrikx.minecraft.bukkit.battlegrounds;
 
+import java.util.List;
 import java.util.logging.Logger;
 
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
@@ -43,6 +45,9 @@ public class Battlegrounds extends JavaPlugin{
 		
 		TeamsManager.getInstance().setTeams(teamConfig.getTeams());
 		
+		this.registerListener();
+		this.setServerPVP();
+		
 		log.info(Battlegrounds.logSuffix + Battlegrounds.plugin.getDescription().getName() + "is now loaded.");
 	}
 	
@@ -65,9 +70,31 @@ public class Battlegrounds extends JavaPlugin{
     	return InterpretCommand.interpret(sender, cmd, commandLabel, args);
     }
     
+    /**
+     * Register Listeners
+     */
     private void registerListener(){
+    	Battlegrounds.plugin.getServer().getPluginManager().registerEvents(new PlayerDamageListener(), plugin);
+    }
+    
+    /**
+     * Activate pvp on server
+     * @return True if a pvp has been activated is a world.
+     */
+    private boolean setServerPVP(){
+    	List<World> worlds = Battlegrounds.plugin.getServer().getWorlds();
     	
-    	plugin.getServer().getPluginManager().registerEvents(new PlayerDamageListener(), plugin);
+    	boolean pvpActivate = false;
+    	
+    	for(World world : worlds){
+    		if(world.getPVP()){
+    			world.setPVP(true);
+    			pvpActivate = true;
+    			log.info(Battlegrounds.logSuffix + String.format("Activate PVP in world : %s", world.getName()));
+    		}
+    	}
+    	
+    	return pvpActivate;
     }
 
 }

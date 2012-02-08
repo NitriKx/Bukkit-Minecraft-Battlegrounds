@@ -32,6 +32,8 @@ permissions:
         children:
             battlegrounds.team.player.add: true
             battlegrounds.team.player.remove: true
+            battlegrounds.team.player.list: true
+            battlegrounds.team.player.admin: true
     battlegrounds.team.create:
         description: Can create a team.
     battlegrounds.team.delete:
@@ -44,4 +46,6 @@ permissions:
         description: Can all player of a team.
         default: true
     battlegrounds.team.player.admin:
-        description: Can set a player team administrator.  
+        description: Can set a player team administrator.
+    battlegrounds.team.player.bypassfriendlyfire:
+        description: Can bypass the friendly fire rule.

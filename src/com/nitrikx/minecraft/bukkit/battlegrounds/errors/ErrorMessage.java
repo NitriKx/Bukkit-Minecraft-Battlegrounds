@@ -15,4 +15,6 @@ public class ErrorMessage {
 	public static final String NotAllowed = ChatColor.RED + "You are not allowed to do this.";
 	
 	public static final String InvalidNameLength = ChatColor.RED + "Your team name is too long or too short.";
+	
+	public static final String ServerCanNotUse = ChatColor.RED + "Server can not perform this command.";
 }

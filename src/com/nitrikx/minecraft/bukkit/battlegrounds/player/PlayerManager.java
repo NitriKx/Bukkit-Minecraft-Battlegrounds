@@ -7,9 +7,11 @@ import java.util.logging.Logger;
 public class PlayerManager {
 	
 	@SuppressWarnings("unused")
-	private static final Logger log = Logger.getLogger("Battleagrounds");
+	private static final Logger log = Logger.getLogger("Battlegrounds");
 	
 	private List<String> players;
+	
+	private List<String> isConstructor;
 	
 	private static PlayerManager singleton;
 	
@@ -18,6 +20,7 @@ public class PlayerManager {
 	 */
 	private PlayerManager(){
 		this.players = new ArrayList<String>();
+		this.isConstructor = new ArrayList<String>();
 	}
 	
 	/**
@@ -38,6 +41,25 @@ public class PlayerManager {
 		
 		return null;
 	}
+	
+	/**
+	 * Set a player as constructor.
+	 * @param playerName The name of the player
+	 * @return True if player is now a constructor, False else.
+	 */
+	public boolean toggleConstructor(String playerName){
+		
+		//If already constructor, remove him
+		if(this.isConstructor.contains(playerName.toLowerCase())){
+			this.isConstructor.remove(playerName.toLowerCase());
+			return false;
+		}
+		else{
+			this.isConstructor.add(playerName.toLowerCase());
+			return true;
+		}
+		
+	}
 
 	public List<String> getPlayer() {
 		return players;
@@ -45,6 +67,10 @@ public class PlayerManager {
 
 	public void setPlayer(List<String> player) {
 		this.players = player;
+	}
+
+	public void setIsConstructor(List<String> isConstructor) {
+		this.isConstructor = isConstructor;
 	}
 	
 	

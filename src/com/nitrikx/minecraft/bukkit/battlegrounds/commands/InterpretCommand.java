@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.Help;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.plugin.PluginInterpreter;
+import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teammessenger.SendMessageToTeam;
 import com.nitrikx.minecraft.bukkit.battlegrounds.commands.teams.TeamsInterpreter;
 
 public class InterpretCommand {
@@ -18,7 +19,7 @@ public class InterpretCommand {
     		Help.sendHelp((Player) sender);
     		return true;
     	}
-    	else{
+    	else if(cmd.getName().equals("bg")){
     		
     		//
 	    	//TEAMS COMMANDS
@@ -27,7 +28,6 @@ public class InterpretCommand {
 	    	if(args[0].equalsIgnoreCase(BattlegroundsCommands.Team.suffix)){ 
 	    		return TeamsInterpreter.interpret(sender, cmd, commandLabel, args);
 	    	}
-    		
     		
 			//
     		//PLUGIN COMMANDS
@@ -38,6 +38,17 @@ public class InterpretCommand {
 	    	}
 	    		
     	}
+    	
+    	//
+		// SEND MESSAGE TO TEAM COMMANDE
+		//
+    	else if(cmd.getName().equals("p")){
+    		return SendMessageToTeam.send(sender, args);
+    	}
+    	else{
+    		return false;
+    	}
+    	
 	}
 	
 	

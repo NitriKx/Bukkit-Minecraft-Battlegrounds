@@ -88,6 +88,8 @@ public class TeamStub implements ConfigurationSerializable{
 		this.color = TeamColors.None;
 	}
 	
+	//private setColorToP
+	
 	/**
 	 * Add a player to the team
 	 * @param player A PlayerBG object, which represent the player to add.
@@ -116,21 +118,21 @@ public class TeamStub implements ConfigurationSerializable{
 	 */
 	public boolean removePlayer(String player){
 		
-		boolean isDelete = true;
+		boolean isDelete = false;
 		
-		//If the player is a member of the team
-		if(this.members.contains(player)){
-			
-			//If the player is an admin
-			if(admins.contains(player)){
-				this.admins.remove(player);
+		//Remove player from members
+		for(int i = 0 ; i < this.members.size() ; i++){
+			if(this.members.get(i).equalsIgnoreCase(player)){
+				this.members.remove(i);
+				isDelete = true;
 			}
-			
-			//Remove from the members
-			this.members.remove(player);
 		}
-		else{
-			isDelete = false;
+		
+		//Remove player from admins
+		for(int i = 0 ; i < this.admins.size() ; i++){
+			if(this.admins.get(i).equalsIgnoreCase(player)){
+				this.admins.remove(i);
+			}
 		}
 		
 		return isDelete;

@@ -8,4 +8,6 @@ public class ConfigBG {
 	
 	public static int maxTeamNameLength = 10;
 	
+	//public static int toolSeparator = 
+	
 }

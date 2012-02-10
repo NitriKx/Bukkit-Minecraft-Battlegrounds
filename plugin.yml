@@ -8,6 +8,10 @@ commands:
         description: Get help of battlegrounds.
         permission: battlegrounds.basic
         usage: "Get list of commands : /bg [help]"
+    p:
+        description: Send a message to team.
+        permission: battlegrounds.basic
+        usage: "Get list of commands : /bg [help]"
 permissions:
     battlegrounds.*:
         description: Can manage all the battlegrounds options.
@@ -27,6 +31,7 @@ permissions:
             battlegrounds.team.create: true
             battlegrounds.team.delete: true
             battlegrounds.team.manageplayer: true
+            battlegrounds.team.speak: true
     battlegrounds.team.manageplayers:
         description: Can manage player into teams.
         children:
@@ -34,6 +39,8 @@ permissions:
             battlegrounds.team.player.remove: true
             battlegrounds.team.player.list: true
             battlegrounds.team.player.admin: true
+    battlegrounds.team.speak:
+        description: Can speak to the team via /p command.
     battlegrounds.team.create:
         description: Can create a team.
     battlegrounds.team.delete:

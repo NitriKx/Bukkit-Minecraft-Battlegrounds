@@ -13,6 +13,8 @@ public class BattlegroundsCommands {
 	
 	public static final String Help = "help";
 	
+	public static final String Construction = "construction";
+	
 	public class Team{
 		public static final String suffix = "team";
 		
@@ -45,5 +47,6 @@ public class BattlegroundsCommands {
 		}
 		
 	}
+	
 }
 
